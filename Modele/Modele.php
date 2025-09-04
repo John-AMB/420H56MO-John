@@ -37,6 +37,19 @@ function getVeterinaire($vet_id) {
         throw new Exception("Aucun veterinaire ne correspond pas au chien");
 }
 
+// Renvoie le responsable de chien
+function getResponsable($res_id) {
+    $bdd = getBdd();
+    $responsable = $bdd->prepare('SELECT * FROM responsables WHERE id= ?');
+    $responsable->execute(array($res_id));
+    if ($responsable->rowCount() ==1)
+        return $responsable->fetch();
+    else if ($responsable->rowCount() > 1)
+        throw new Exception("test2");
+    else
+        throw new Exception("Aucun responsable ne correspond pas au chien");
+}
+
 // Ajoute un commentaire associés à un article
 function setCommentaire($commentaire) {
     $bdd = getBdd();

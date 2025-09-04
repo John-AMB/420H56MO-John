@@ -10,6 +10,8 @@ try {
             $chien = getChien($id);
             $vet_id=$chien['vet_id'];
             $veterinaire = getVeterinaire($vet_id);
+            $res_id=$chien['responsable_id'];
+            $responsable = getResponsable($res_id);
             require 'Vue/vueChien.php';
         } else
             throw new Exception("Identifiant de chien incorrect");
