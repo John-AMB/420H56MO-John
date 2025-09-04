@@ -1,9 +1,9 @@
 <?php
-require 'Modele.php';
+require 'Modele/Modele.php';
 try {
     $chiens = getChiens();
-    require 'vueAccueil.php';
+    require 'Vue/vueAccueil.php';
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
-    require 'vueErreur.php';
+    require 'Vue/vueErreur.php';
 }

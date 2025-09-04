@@ -1,0 +1,2 @@
+index -> vueAccueil -> gabarit
+vueAccueil -> lien nom -> chien -> vueChien

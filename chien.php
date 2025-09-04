@@ -1,6 +1,6 @@
 <?php
 
-require 'Modele.php';
+require 'Modele/Modele.php';
 
 try {
     if (isset($_GET['id'])) {
@@ -10,12 +10,12 @@ try {
             $chien = getChien($id);
             $vet_id=$chien['vet_id'];
             $veterinaire = getVeterinaire($vet_id);
-            require 'vueChien.php';
+            require 'Vue/vueChien.php';
         } else
             throw new Exception("Identifiant de chien incorrect");
     } else
         throw new Exception("Aucun identifiant de chien");
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
-    require 'vueErreur.php';
+    require 'Vue/vueErreur.php';
 }
