@@ -1,7 +1,7 @@
 <?php
 
 require 'Modele.php';
-
+/*
 try {
     if (isset($_POST['article_id'])) {
         // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec

@@ -1,5 +1,5 @@
 <?php
-
+/*
 require 'Modele/Modele.php';
 
 try {
