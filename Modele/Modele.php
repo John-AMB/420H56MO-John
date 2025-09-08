@@ -36,6 +36,11 @@ function getVeterinaire($vet_id) {
     else
         throw new Exception("Aucun veterinaire ne correspond pas au chien");
 }
+function getVeterinaires(){
+    $bdd = getBdd();
+    $veterinaires = $bdd->query('SELECT id, nom from Veterinaires ORDER BY nom');
+    return $veterinaires->fetchAll(PDO::FETCH_ASSOC);
+}
 
 // Renvoie le responsable de chien
 function getResponsable($res_id) {
