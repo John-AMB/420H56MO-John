@@ -14,7 +14,7 @@
                 <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
             </a>
            Date de naissance: <time><?= $chien['date_de_naissance'] ?></time>, 
-           sexe: <?= $chien['sexe'] ?>
+           Sexe: <?= $chien['sexe'] ?>
         </header>
     </article>
     <hr />
@@ -23,7 +23,7 @@
 <form action="commentaire.php" method="post">
     <h2>Faire une requete</h2>
     <p>
-        <label for="auteur">Nom de chien</label> : <input type="text" name="auteur" id="auteur" /><br />
+        <label for="nom">Nom de chien</label> : <input type="text" name="auteur" id="auteur" /><br />
         <label for="texte">Le genre de chien</label> :  
         <input type="radio" name="genre" value="sexe" required/>
         <label for="male">Mâle</label>
@@ -42,8 +42,10 @@
         <?php endforeach; ?>
         </select><br />
 
+        <label for="responsable">La personne à contacter</label> :  <textarea type="text" name="texte" id="texte" ></textarea><br />
+        <label for="numero">Numero de telephone</label> :  <textarea type="text" name="texte" id="texte" ></textarea><br />
+        
 
-        <label for="texte">Commentaire</label> :  <textarea type="text" name="texte" id="texte" >Écrivez votre commentaire ici</textarea><br />
         <input type="hidden" name="article_id" value="<?= $article['id'] ?>" /><br />
         <input type="submit" value="Envoyer" />
     </p>

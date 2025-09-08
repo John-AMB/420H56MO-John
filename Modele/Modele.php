@@ -62,3 +62,12 @@ function setCommentaire($commentaire) {
     $commentaires->execute(array($commentaire['article_id'], $commentaire['auteur'], $commentaire['titre'], $commentaire['texte'], $commentaire['prive']));
     return $commentaires;
 }
+
+function createResponsable($nom, $telephone) {
+    $bdd = getBdd();
+    $responsable = $bdd->prepare('INSERT INTO responsables (nom, numero_de_telephone) VALUES(?,?')
+    $sql = "INSERT INTO responsables (nom, numero_de_telephone) VALUES (?, ?)";
+    $responsable->execute(array())
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$nom, $telephone]);
+}
