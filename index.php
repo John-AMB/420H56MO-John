@@ -25,7 +25,25 @@ try {
                     throw new Exception("Identifiant d'article incorrect");
             } else
                 throw new Exception("Aucun identifiant d'article");
-        } else {
+
+        }if ($_GET['action'] == 'responsable') {
+            //if nom = null -> nom = ''
+            $nom = trim($_POST['nom'] ?? '');
+            $numero = trim($_POST['numero_de_telephone'] ?? '');
+
+            if (!preg_match('/^\(\d{3}\) \d{3}-\d{4}$/', $numero)) {
+                $message = "Format du numéro invalide. Utilisez (123) 456-7891.";
+            } elseif (empty($nom)) {
+                $message = "Le nom ne peut pas être vide.";
+            } else {
+                // cas valid
+                $responsable = ['nom' => $nom, 'numero_de_telephone' => $numero];
+                responsable($responsable);
+                
+            }
+        }
+
+        else {
             // Action mal définie
             throw new Exception("Action non valide");
         }

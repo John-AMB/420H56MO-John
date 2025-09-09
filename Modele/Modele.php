@@ -55,6 +55,12 @@ function getResponsable($res_id) {
         throw new Exception("Aucun responsable ne correspond pas au chien");
 }
 
+function getResponsables(){
+    $bdd = getBdd();
+    $responsables = $bdd->query('SELECT id, nom from Responsables ORDER BY nom');
+    return $responsables->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // Ajoute un commentaire associés à un article
 function setCommentaire($commentaire) {
     $bdd = getBdd();
@@ -63,12 +69,9 @@ function setCommentaire($commentaire) {
     return $commentaires;
 }
 
+function setResponsable($responsable) {
+    $bdd = getBdd();
+    $responsables = $bdd->prepare('INSERT INTO responsables (nom, numero_de_telephone) VALUES (?, ?)');
+    $responsables->execute(array($responsable['nom'], $responsable['numero_de_telephone']));
 
-//function createResponsable($nom, $telephone) {
-    //$bdd = getBdd();
-    //$responsable = $bdd->prepare('INSERT INTO responsables (nom, numero_de_telephone) VALUES(?,?')
-    //$sql = "INSERT INTO responsables (nom, numero_de_telephone) VALUES (?, ?)";
-   // $responsable->execute(array())
-    //$stmt = $bdd->prepare($sql);
-    //$stmt->execute([$nom, $telephone]);
-//}
+}

@@ -10,11 +10,18 @@ function accueil() {
 
 function chien($id, $erreur) {
     $chien = getChien($id);
+    $veterinaires = getVeterinaires();
+    $responsables= getResponsables();
     $vet_id = $chien['vet_id'];
     $veterinaire = getVeterinaire($vet_id);
     $res_id = $chien['responsable_id'];
     $responsable = getResponsable($res_id);
     require 'Vue/vueChien.php';
+}
+
+function responsable($responsable) {
+    setResponsable($responsable);
+    accueil();
 }
 
 function erreur($msgErreur) {
