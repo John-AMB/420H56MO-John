@@ -1,6 +1,7 @@
 <?php $titre = "Nom de chien - " . $chien['nom_chien']; ?>
 
 <?php ob_start(); ?>
+
 <article>
     <header>
         <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
@@ -14,10 +15,10 @@
     <h1 id="titreVet">Maitre/Maitress: <?=$responsable['nom'] ?></h1>
 </header>
 
-<form action="commentaire.php" method="post">
+<form action="index.php?action=reqChien" method="post">
     <h2>Faire une requete</h2>
     <p>
-        <label for="nom">Nom de chien</label> : <input type="text" name="auteur" id="auteur" /><br />
+        <label for="nom">Nom de chien</label> : <input type="text" name="nom" id="nom" /><br />
         
         <label for="texte">Le genre de chien</label> :  
         <input type="radio" name="sexe" value="male" required/>
@@ -68,5 +69,5 @@
 
 <?php $contenu = ob_get_clean(); ?>
 
-<?php require 'Vue/gabarit.php'; ?>
+<?php require 'gabarit.php'; ?>
 

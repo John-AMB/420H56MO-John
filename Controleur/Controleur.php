@@ -24,6 +24,11 @@ function responsable($responsable) {
     accueil();
 }
 
+function reqChien($req) {
+    setReqChien($req);
+    accueil();
+}
+
 function erreur($msgErreur) {
     require 'Vue/vueErreur.php';
 }

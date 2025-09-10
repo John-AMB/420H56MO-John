@@ -1,13 +1,5 @@
 <?php
-/*require 'Modele/Modele.php';
-try {
-    $chiens = getChiens();
-    require 'Vue/vueAccueil.php';
-} catch (Exception $e) {
-    $msgErreur = $e->getMessage();
-    require 'Vue/vueErreur.php';
-}
-*/
+
 require 'Controleur/Controleur.php';
 
 try {
@@ -41,7 +33,33 @@ try {
                 responsable($responsable);
                 
             }
+        }elseif ($_GET['action'] == 'reqChien') {
+            //if nom = null -> nom = ''
+            $nom = trim($_POST['nom'] ?? '');
+            $sexe = $_POST['sexe'] ?? '';
+            $date_naissance = $_POST['date_de_naissance'] ?? '';
+            $vet_id = $_POST['vet_id'] ?? '';
+            $responsable_id = $_POST['responsable_id'] ?? '';
+            var_dump($_POST);
+
+            if (empty($nom) || empty($sexe) || empty($date_naissance) || empty($vet_id) || empty($responsable_id)) {
+                // cas si un des champs n'est pas rempli
+                echo "Remplir tous les champs.";
+            } else {
+                // cas valid
+                $reqC = [
+                    'nom' => $nom,
+                    'sexe' => $sexe,
+                    'date_de_naissance' => $date_naissance,
+                    'vet_id'=> $vet_id,
+                    'responsable_id' => $responsable_id
+                ];
+                //envoie le donne a reqChien qui est dans Controleur.php
+                reqChien($reqC);
+                
+            }
         }
+        
 
         else {
             // Action mal définie

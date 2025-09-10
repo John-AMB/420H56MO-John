@@ -75,3 +75,15 @@ function setResponsable($responsable) {
     $responsables->execute(array($responsable['nom'], $responsable['numero_de_telephone']));
 
 }
+
+function setReqChien($req) {
+    $bdd = getBdd();
+    $reqs = $bdd->prepare('INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES (?, ?, ?, ?, ?)');
+    $reqs->execute(array(
+        $req['nom'],
+        $req['sexe'],
+        $req['date_de_naissance'],
+        $req['vet_id'],
+        $req['responsable_id']
+    ));
+}
