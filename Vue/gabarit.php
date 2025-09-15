@@ -19,7 +19,7 @@
 
         <nav class="nav">
             <a href="index.php">Accueil</a>
-            <a href="Vue/vueCompte.php">Créer un compte</a>
+            <a href="vueRequete.php">Faire une requete</a>
         </nav>
 
         <div id="contenu">
