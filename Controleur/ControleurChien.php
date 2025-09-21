@@ -9,25 +9,30 @@ class ControleurChien {
 
     private $chien;
     private $responsable;
+    private $veterinaire;
 
     public function __construct() {
         $this->chien = new Chien();
-        $this->commentaire = new Commentaire();
+        $this->responsable = new Responsable();
+        $this->veterinaire = new Veterinaire();
     }
 
 // Affiche la liste de tous les articles du blog
     public function chiens() {
         $chiens = $this->chien->getChiens();
         $vue = new Vue("Chiens");
-        $vue->generer(['chiens' => $articles]);
+        $vue->generer(['chiens' => $chiens]);
     }
 
 // Affiche les détails sur un article
-    public function article($idArticle, $erreur) {
-        $article = $this->article->getArticle($idArticle);
-        $commentaires = $this->commentaire->getCommentaires($idArticle);
-        $vue = new Vue("Article");
-        $vue->generer(['article' => $article, 'commentaires' => $commentaires, 'erreur' => $erreur]);
+    public function chien($idChien, $erreur) {
+        $chien = $this->chien->getChien($idChien);
+        $responsableId = $chien['responsable_id'];
+        $responsable = $this->responsable->getResponsable($responsableId);
+        $veterinaireId = $chien['vet_id'];
+        $veterinaire = $this->veterinaire->getVeterinaire($veterinaireId);
+        $vue = new Vue("Chien");
+        $vue->generer(['chien' => $chien, 'responsable' => $responsable, 'veterinaire' => $veterinaire ,'erreur' => $erreur]);
     }
 
     public function nouvelArticle() {

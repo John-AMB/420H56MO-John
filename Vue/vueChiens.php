@@ -1,7 +1,7 @@
 <?php $this->titre = 'Projet'; ?>
 
 <a href="index.php?action=reqChien">
-    <h2 class="titreArticle">Faire une requete</h2>
+    <h2 class="titreChien">Faire une requete</h2>
 </a>
 <?php foreach ($chiens as $chien):
     ?>
@@ -9,7 +9,7 @@
 <article>
     <header>
         <a href="index.php?action=chien&id=<?= $chien['id'] ?>">
-            <h1 class="titreArticle"><?= $chien['nom'] ?></h1>
+            <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
         </a>
         <strong class="">Sexe:<?= $chien['sexe'] ?></strong>
         <time><?= $chien['date_de_naissance'] ?></time>, par utilisateur #<?= $chien['responsable_id'] ?>

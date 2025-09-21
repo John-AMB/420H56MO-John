@@ -1,7 +1,13 @@
 <?php
 
-require 'Controleur/Controleur.php';
+//require 'Controleur/Controleur.php';
 
+require 'Controleur/Routeur.php';
+
+$routeur = new Routeur();
+$routeur->routerRequete();
+
+/*
 try {
     if (isset($_GET['action'])) {
 
@@ -71,3 +77,4 @@ try {
 } catch (Exception $e) {
     erreur($e->getMessage());
 }
+*/

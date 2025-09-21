@@ -1,7 +1,5 @@
 <?php $titre = "Nom de chien - " . $chien['nom_chien']; ?>
 
-<?php ob_start(); ?>
-
 <article>
     <header>
         <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
@@ -67,7 +65,6 @@
     <button type="submit">Créer</button>
 </form>
 
-<?php $contenu = ob_get_clean(); ?>
 
 <?php require 'gabarit.php'; ?>
 

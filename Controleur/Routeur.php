@@ -24,12 +24,12 @@ class Routeur {
                 // À propos
                 if ($_GET['action'] == 'apropos') {
                     $this->apropos();
-                } else if ($_GET['action'] == 'article') {
+                } else if ($_GET['action'] == 'chien') {
                     $id = intval($this->getParametre($_GET, 'id'));
                     if ($id != 0) {
                         // Vérifier si une erreur est présente
                         $erreur = isset($_GET['erreur']) ? $_GET['erreur'] : '';
-                        $this->ctrlArticle->article($id, $erreur);
+                        $this->ctrlChien->chien($id, $erreur);
                     } else
                         throw new Exception("Identifiant d'article non valide");
                 } else if ($_GET['action'] == 'commentaire') {

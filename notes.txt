@@ -6,4 +6,5 @@ index -> routeurRequete() (Controleur/Routeur.php) -> Routeur.php ->articles()(C
 -> Modele.php -> getBdd()(Modele.php) 
 
 v04: index -> accueil()(Controleur) -> Controleur.php
-v08: index -> Controleur/Routeur.php -> ControleurArticle.php et Vue/Vue.php -> Modele/Article.php et Commentaire.php -> Modele.php
+v08: index -> Controleur/Routeur.php -> ControleurArticle.php et Vue/Vue.php ->
+Modele/Article.php et Commentaire.php -> Modele.php
