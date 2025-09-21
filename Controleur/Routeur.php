@@ -32,7 +32,7 @@ class Routeur {
                         $this->ctrlChien->chien($id, $erreur);
                     } else
                         throw new Exception("Identifiant d'article non valide");
-                } else if ($_GET['action'] == 'commentaire') {
+                } else if ($_GET['action'] == 'commentaire12') {
                     // Tester l'existence des paramètres requis
                     $article_id = intval($this->getParametre($_POST, 'article_id'));
                     if ($article_id != 0) {
@@ -56,41 +56,44 @@ class Routeur {
                         $this->ctrlCommentaire->supprimer($id);
                     } else
                         throw new Exception("Identifiant de commentaire non valide");
-                } else if ($_GET['action'] == 'nouvelArticle') {
-                    $this->ctrlArticle->nouvelArticle();
-                } else if ($_GET['action'] == 'ajouter') {
+                } else if ($_GET['action'] == 'reqChien') {
+                    $this->ctrlChien->nouvelReq();
+                }else if ($_GET['action'] == 'creerResponsable') {
+                    $this->ctrlChien->nouveauResp();
+                }else if ($_GET['action'] == 'ajouterChien') {
                     // Tester l'existence des paramètres requis
-                    $utilisateur_id = intval($this->getParametre($_POST, 'utilisateur_id'));
-                    if ($utilisateur_id != 0) {
-                        $this->getParametre($_POST, 'titre');
-                        $this->getParametre($_POST, 'sous_titre');
-                        $this->getParametre($_POST, 'texte');
-                        $this->getParametre($_POST, 'type');
-                        // Enregistrer l'article
-                        $this->ctrlArticle->ajouter($_POST);
-                    } else
-                        throw new Exception("Identifiant d'utilisateur non valide");
-                } else if ($_GET['action'] == 'miseAJourArticle') {
+                    $this->getParametre($_POST, 'nom_chien');
+                    $this->getParametre($_POST, 'sexe');
+                    $this->getParametre($_POST, 'date_de_naissance');
+                    $this->getParametre($_POST, 'vet_id');
+                    $this->getParametre($_POST, 'responsable_id');
+                    $this->ctrlChien->ajouterChien($_POST);
+                } else if ($_GET['action'] == 'responsable') {
+                    // Tester l'existence des paramètres requis
+                    $this->getParametre($_POST, 'nom');
+                    $this->getParametre($_POST, 'numero_de_telephone');
+                    $this->ctrlChien->responsable($_POST);
+                }
+                else if ($_GET['action'] == 'miseAJourChien') {
                     // Tester l'existence des paramètres requis
                     $id = intval($this->getParametre($_POST, 'id'));
                     if ($id != 0) {
-                        $utilisateur_id = intval($this->getParametre($_POST, 'utilisateur_id'));
-                        if ($utilisateur_id != 0) {
-                            //Vérifier l'existence des paramètres
-                            $this->getParametre($_POST, 'titre');
-                            $this->getParametre($_POST, 'sous_titre');
-                            $this->getParametre($_POST, 'texte');
-                            $this->getParametre($_POST, 'type');
-                            // Enregistrer l'article
-                            $this->ctrlArticle->miseAJourArticle($_POST);
-                        } else
-                            throw new Exception("Identifiant d'utilisateur non valide");
+
+                        //Vérifier l'existence des paramètres
+                        $this->getParametre($_POST, 'nom_chien');
+                        $this->getParametre($_POST, 'sexe');
+                        $this->getParametre($_POST, 'date_de_naissance');
+                        $this->getParametre($_POST, 'vet_id');
+                        $this->getParametre($_POST, 'responsable_id');
+                        // Enregistrer l'article
+                        $this->ctrlChien->miseAJourChien($_POST);
+
                     } else
-                        throw new Exception("Identifiant d'article non valide");
-                } else if ($_GET['action'] == 'modifierArticle') {
+                        throw new Exception("Identifiant de chien non valide");
+                } else if ($_GET['action'] == 'modifierChien') {
                     $id = intval($this->getParametre($_GET, 'id'));
                     if ($id != 0) {
-                        $this->ctrlArticle->modifierArticle($id);
+                        $this->ctrlChien->modifierChien($id);
                     } else
                         throw new Exception("Identifiant d'article non valide");
                 } else if ($_GET['action'] == 'quelsTypes') {

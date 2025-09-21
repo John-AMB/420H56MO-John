@@ -20,8 +20,9 @@ class ControleurChien {
 // Affiche la liste de tous les articles du blog
     public function chiens() {
         $chiens = $this->chien->getChiens();
+        $responsables = $this->responsable->getResponsables();
         $vue = new Vue("Chiens");
-        $vue->generer(['chiens' => $chiens]);
+        $vue->generer(['chiens' => $chiens, 'responsable' => $responsables]);
     }
 
 // Affiche les détails sur un article
@@ -35,28 +36,36 @@ class ControleurChien {
         $vue->generer(['chien' => $chien, 'responsable' => $responsable, 'veterinaire' => $veterinaire ,'erreur' => $erreur]);
     }
 
-    public function nouvelArticle() {
-        $vue = new Vue("Ajouter");
-        $vue->generer();
+    public function nouvelReq() {
+        $responsables = $this->responsable->getResponsables();
+        $veterinaires = $this->veterinaire->getVeterinaires();
+        $vue = new Vue("Requete");
+        $vue->generer(['veterinaires'=>$veterinaires, 'responsables'=>$responsables]);
+    }
+
+    public function nouveauResp() {
+        $responsables = $this->responsable->getResponsables();
+        $vue = new Vue("Responsable");
+        $vue->generer(['responsables'=>$responsables]);
     }
 
 // Enregistre le nouvel article et retourne à la liste des articles
-    public function ajouter($article) {
-        $this->article->setArticle($article);
-        $this->articles();
+    public function ajouterChien($chien) {
+        $this->chien->setReqChien($chien);
+        $this->chiens();
     }
 
 // Modifier un article existant    
-    public function modifierArticle($id) {
-        $article = $this->article->getArticle($id);
-        $vue = new Vue("ModifierArticle");
-        $vue->generer(['article' => $article]);
+    public function modifierChien($id) {
+        $chien = $this->chien->getChien($id);
+        $vue = new Vue("ModifierChien");
+        $vue->generer(['chien' => $chien]);
     }
 
 // Enregistre l'article modifié et retourne à la liste des articles
-    public function miseAJourArticle($article) {
-        $this->article->updateArticle($article);
-        $this->articles();
+    public function miseAJourChien($chien) {
+        $this->chien->updateChien($chien);
+        $this->chiens();
     }
 
 }

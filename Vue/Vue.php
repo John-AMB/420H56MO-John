@@ -5,7 +5,7 @@ class Vue {
     // Nom du fichier associé à la vue
     private $fichier;
     // Titre de la vue (défini dans le fichier vue)
-    private $nom;
+    private $titre;
 
     public function __construct($action) {
         // Détermination du nom du fichier vue à partir de l'action
@@ -17,7 +17,7 @@ class Vue {
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('Vue/gabarit.php', array('nom' => $this->nom, 'contenu' => $contenu));
+        $vue = $this->genererFichier('Vue/gabarit.php', array('nom' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }

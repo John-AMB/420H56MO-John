@@ -11,19 +11,16 @@ class Chien extends Modele {
 
 // Renvoie la liste de tous les articles, triés par identifiant décroissant
     public function getChiens() {
-        $sql = 'select * from Chiens'
-                . ' order by ID desc';
+        //on ajoute le nom de responsable dans le table chien a la condition que responsable.id = chien.responsable_id
+        //pour qu'on puisse montre le responsable dans le vueChiens
+        $sql = 'SELECT c.*, r.nom AS responsable_nom
+            FROM chiens c
+            JOIN responsables r ON c.responsable_id = r.id
+            ORDER BY c.id DESC';
         $chiens = $this->executerRequete($sql);
         return $chiens;
     }
 
-    /*
-    function getChiens() {
-    $bdd = getBdd();
-    $chiens = $bdd->query('select * from Chiens'
-            . ' order by ID desc');
-    return $chiens;
-}*/
 
 // Renvoie les informations sur un article
     function getChien($idChien) {
@@ -50,7 +47,7 @@ function getChien($idChien) {
  // Ajout d'un nouvel article
     public function setReqChien($chien) {
         $sql = 'INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES(?, ?, ?, ?, ?)';
-        $result = $this->executerRequete($sql, [$chien['nom'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id']]);
+        $result = $this->executerRequete($sql, [$chien['nom_chien'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id']]);
         return $result;
     }
     
@@ -69,9 +66,9 @@ function getChien($idChien) {
     // Met à jour un article
     public function updateChien($chien) {
         $sql = 'UPDATE chiens'
-                . ' SET nom_chien = ?, sexe = ?, date_de_naissance = ?, vet_id, responsable_id'
+                . ' SET nom_chien = ?, sexe = ?, date_de_naissance = ?, vet_id = ?, responsable_id = ?'
                 . ' WHERE id = ?';
-        $result = $this->executerRequete($sql, [$article['titre'], $article['sous_titre'], $article['utilisateur_id'], $article['texte'], $article['type'], $article['id']]);
+        $result = $this->executerRequete($sql, [$chien['nom_chien'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id'], $chien['id']]);
         return $result;
     }
     

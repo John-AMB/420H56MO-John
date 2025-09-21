@@ -17,7 +17,7 @@
 
 
             <a href="index.php">
-                <h1 id="titreBlog"><span data-i18n="BlogueProf">Le Blogue du prof</span> v0.8.0.1</h1>
+                <h1 id="titreBlog"><span data-i18n="BlogueProf">Vétérinaire pour chiens</span> v0.8.0.1</h1>
             </a>
             <p>Version MVC en PHP orienté-objet avec tests.</p>
             </a>

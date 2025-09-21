@@ -46,7 +46,7 @@ abstract class Modele {
     }
 
 }
-
+/*
 // Effectue la connexion à la BDD
 // Instancie et renvoie l'objet PDO associé
 function getBdd() {
@@ -127,10 +127,11 @@ function setReqChien($req) {
     $bdd = getBdd();
     $reqs = $bdd->prepare('INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES (?, ?, ?, ?, ?)');
     $reqs->execute(array(
-        $req['nom'],
+        $req['nom_chien'],
         $req['sexe'],
         $req['date_de_naissance'],
         $req['vet_id'],
         $req['responsable_id']
     ));
 }
+*/

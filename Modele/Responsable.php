@@ -11,7 +11,7 @@ class Responsable extends Modele {
 
     // Renvoie la liste des commentaires associés à un article
     public function getResponsables() {
-        $sql = 'select * from commentaires'
+        $sql = 'select * from responsables'
                 . ' order by ID desc';
 
         $responsables = $this->executerRequete($sql);
