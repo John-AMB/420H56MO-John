@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Modele/Modele.php';
+require_once 'Framework/Modele.php';
 
 class Dossier extends Modele {
 
@@ -24,4 +24,5 @@ class Dossier extends Modele {
         $sql = 'UPDATE dossiers_de_sante SET sommaire = ? WHERE chien_id = ?';
         $this->executerRequete($sql, [$sommaire, $chienId]);
     }
+    
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Modele/Modele.php';
+require_once 'Framework/Modele.php';
 
 /**
  * Fournit les services d'accès aux articles 
@@ -21,6 +21,12 @@ class Chien extends Modele {
         return $chiens;
     }
 
+// Ajout d'un nouvel article
+    public function setChien($chien) {
+        $sql = 'INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES(?, ?, ?, ?, ?)';
+        $result = $this->executerRequete($sql, [$chien['nom_chien'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id']]);
+        return $result;
+    }
 
 // Renvoie les informations sur un article
     function getChien($idChien) {
@@ -34,13 +40,6 @@ class Chien extends Modele {
         }
     }
 
- // Ajout d'un nouvel article
-    public function setReqChien($chien) {
-        $sql = 'INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES(?, ?, ?, ?, ?)';
-        $result = $this->executerRequete($sql, [$chien['nom_chien'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id']]);
-        return $result;
-    }
-    
     // Met à jour un article
     public function updateChien($chien) {
         $sql = 'UPDATE chiens'

@@ -14,7 +14,7 @@
 <article>
     <header>
         <a href="index.php?action=chien&id=<?= $chien['id'] ?>">
-            <h2 class="titreChien"><?= $chien['nom_chien'] ?></h1>
+            <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
         </a>
         <strong class="">Sexe: <?= $chien['sexe'] ?></strong>
         <time>Date de naissance: <?= $chien['date_de_naissance'] ?></time>. Responsable: <?= $chien['responsable_nom'] ?>
