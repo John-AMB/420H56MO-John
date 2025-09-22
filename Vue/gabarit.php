@@ -5,17 +5,12 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="Contenu/css/style.css" />
-    <link rel="stylesheet"
-        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"
-        type="text/css" />
     <title><?= $titre ?></title> <!-- Élément spécifique -->
 </head>
 
 <body>
     <div id="global">
         <header>
-
-
             <a href="index.php">
                 <h1 id="titreBlog"><span data-i18n="BlogueProf">Vétérinaire pour chiens</span> v0.8.0.1</h1>
             </a>

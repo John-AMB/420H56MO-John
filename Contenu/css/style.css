@@ -1,49 +1,165 @@
-/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
-   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
-   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
-   pixels, em, autres unités...).
-   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
-   hauteur du «grand-père», et ainsi de suite.
-   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
-   - un parent (body) en "height: 100%";
-   - le parent de body également en "height: 100%". */
-html,
-body {
-  height: 100%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: #bfbfbf;
-  background: black;
-  font-family: "Futura-Medium", "Futura", "Trebuchet MS", sans-serif;
-}
-
-h1 {
-  color: white;
-}
-
-.titreChien {
-  margin-bottom: 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e0e0e0;
+  color: #333;
 }
 
 #global {
-  min-height: 100%; /* Voir commentaire sur html et body plus haut */
-  background: #333534;
-  width: 70%;
-  margin: auto; /* Permet de centrer la div */
-  text-align: justify;
-  padding: 5px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #0077b6;
+  color: white;
+  border-radius: 10px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a h3 {
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: normal;
+  font-size: 1rem;
+  color: #caf0f8;
 }
 
 #contenu {
-  margin-bottom: 30px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-#titreBlog,
-#piedBlog {
+footer#piedBlog {
+  margin-top: 20px;
   text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+  color: #555;
+  border-top: 1px solid #ddd;
 }
 
-#titreVet {
-  font-size: 100%;
+article {
+  margin-bottom: 20px;
+}
+
+article header h1 {
+  font-size: 1.5rem;
+  color: #023e8a;
+}
+
+article p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+a {
+  color: #0077b6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #0096c7;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #0077b6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0096c7;
+}
+
+.link-row {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.link-row a {
+  text-decoration: none;
+  color: #0077b6;
+}
+
+.link-row a:hover {
+  color: #0096c7;
+}
+
+.Accueil-link {
+  font-size: 1.5rem;
+  background-color: #caf0f8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.link-row a:hover .Accueil-link {
+  background-color: #ade8f4;
+}
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.button-row form {
+  margin: 0;
+}
+
+.button-row input[type="submit"] {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #0077b6;
+  background-color: #0096c7;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-row input[type="submit"]:hover {
+  background-color: #0077b6;
 }

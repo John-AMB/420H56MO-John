@@ -28,7 +28,7 @@
         <input type="hidden" name="vet_id" value="<?= $chien['vet_id'] ?>" />
         <input type="hidden" name="responsable_id" value="<?= $chien['responsable_id'] ?>" /><br />
 
-        
+    <div class="button-row">
         <input type="submit" value="Modifier" />
     </p>
 </form>
@@ -36,5 +36,6 @@
 <form action="index.php">
     <input type="submit" value="Annuler" />
 </form>
+    </div>
 
 
