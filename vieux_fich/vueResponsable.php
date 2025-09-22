@@ -20,3 +20,18 @@
     <button type="submit">Créer</button>
 </form>
 
+
+<?php foreach ($responsables as $responsable):
+    ?>
+
+    <article>
+        <header>
+            <h1 class="titreChien">Nom: <?= $responsable['nom'] ?></h1>
+            <strong class="">Numero de telephone: <?= $responsable['numero_de_telephone'] ?></strong>
+        </header>
+        <p>
+            <a href="Chiens/modifierChien/<?= $responsable['id'] ?>"> [Supprimer]</a>
+        </p>
+    </article>
+    <hr />
+<?php endforeach; ?

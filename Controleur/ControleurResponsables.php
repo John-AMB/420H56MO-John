@@ -22,18 +22,45 @@ class ControleurResponsables extends Controleur{
 
     public function index() {
         $responsables = $this->responsable->getResponsables();
+        $erreur = $this->requete->getSession()->existeAttribut("erreur") ? $this->requete->getsession()->getAttribut("erreur") : '';
+        $responsable = $this->requete->getSession()->existeAttribut("responsable")
+        ? $this->requete->getSession()->getAttribut("responsable")
+        : null;
+
+    $this->genererVue([
+        'erreur' => $erreur,
+        'responsables' => $responsables,
+        'responsable' => $responsable
+    ]);
+    }
+
+    public function connecter() {
+        if ($this->requete->existeParametre("login") && $this->requete->existeParametre("mdp")) {
+            $login = $this->requete->getParametre("login");
+            $mdp = $this->requete->getParametre("mdp");
+            if ($this->responsable->connecter($login, $mdp)) {
+                $responsable = $this->responsable->getUtilisateur($login, $mdp);
+                $this->requete->getSession()->setAttribut("responsable", $responsable);
+                // Éliminer un code d'erreur éventuel
+                if ($this->requete->getSession()->existeAttribut('erreur')) {
+                    $this->requete->getsession()->setAttribut('erreur', '');
+                }
+                $this->rediriger("AdminChiens");
+            } else {
+                $this->requete->getSession()->setAttribut('erreur', 'mdp');
+                $this->rediriger('Responsables');
+            }
+        } else
+            throw new Exception("Action impossible : login ou mot de passe non défini");
+    }
+
+    public function deconnecter() {
+        $this->requete->getSession()->detruire();
+        $this->rediriger("");
+    }
+    public function list(){
+        $responsables = $this->responsable->getResponsables();
         $this->genererVue(['responsables' => $responsables]);
     }
 
-   public function creerResponsable() {
-        $this->genererVue();
-    }
-    public function ajouterResponsable(){
-        $responsable['nom'] = $this->requete->getParametre('nom');
-        $responsable['numero_de_telephone'] = $this->requete->getParametre('numero_de_telephone');
-        
-        $this->responsable->setResponsable($responsable);
-        
-        $this->executerAction('index');
-    }
 }

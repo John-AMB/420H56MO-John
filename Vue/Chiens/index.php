@@ -1,27 +1,14 @@
 <?php $this->titre = 'Le Blogue du prof'; ?>
-
-<div class="link-row">
-    <a href="Chiens/nouveauChien">
-        <h2 class="Accueil-link">Ajouter un article</h2>
-    </a>
-    <a href="Responsables">
-        <h2 class="Accueil-link">Ceux qui se sont inscrits</h2>
-    </a>
-</div>
+<a href="Responsables/list">
+    <h2 class="Accueil-link">Voir les membres</h2>
+</a>
 <?php foreach ($chiens as $chien):
     ?>
-
     <article>
         <header>
-            <a href="Chiens/chien/<?= $chien['id'] ?>">
-                <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
-            </a>
+            <h1 class="titreChien"><?= $chien['nom_chien'] ?></h1>
             <strong class="">Sexe: <?= $chien['sexe'] ?></strong>
-            <time>Date de naissance: <?= $chien['date_de_naissance'] ?></time>. Responsable: <?= $chien['responsable_nom'] ?>
-        </header>
-        <p>
-            <a href="Chiens/modifierChien/<?= $chien['id'] ?>"> [modifier ce chien]</a>
-        </p>
+            <time>Date de naissance: <?= $chien['date_de_naissance'] ?></time>.
     </article>
     <hr />
 <?php endforeach; ?>    

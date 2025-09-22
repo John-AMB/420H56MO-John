@@ -1,12 +1,11 @@
 <?php $titre = 'À propos du Blogue du prof'; ?>
 
 <ul>
-    <li>André Pilon</li>
+    <li>John Anjelo Basay</li>
 
     <li>420-4A5 MO Web et Bases de données</li>
-    <li>Hiver 2021, Collège Montmorency</li>
+    <li>Automne 2025, Collège Montmorency</li>
 </ul>
-<h3>Le Blogue du prof</h3>
 <ul>
     <li>L'application "Le Blogue du prof" permet de composer et de
         diffuser des articles :</li>
@@ -55,22 +54,3 @@
         </ul>
     </ul>
 </ul>
-
-<table>
-    <tr>
-        <td>
-            <h4>Base de données utilisée par l'application (v0.9.0.1) :</h4>
-            <object data="Contenu/images/Blogue-vers-MVC-v1_0_0_0.svg" type="image/svg+xml" height="500" width="800">
-                <img src="Contenu/images/blogue_phpmyadmin.jpg" alt=""/>
-            </object><br/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h4>Basé sur ce modèle original :</h4>
-            <a href="http://www.databaseanswers.org/data_models/big_data_hadoop/index.htm" >
-                <img src="Contenu/images/data_model.gif" alt=""/><br/>
-                Blog as a "Real Life example :</a>
-        </td>
-    </tr>
-</table>

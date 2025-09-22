@@ -1,10 +1,10 @@
 <?php
 
-require_once 'Vue/Vue.php';
+require_once 'Framework/Vue.php';
 $chiens = [
     [
         'id' => '991',
-        'nom' => 'nom Test 1',
+        'nom' => 'Testeur1',
         'sexe' => 'male',
         'date_de_naissance' => '2017-12-31',
         'vet_id' => '1',
@@ -12,14 +12,14 @@ $chiens = [
     ],
     [
         'id' => '992',
-        'titre' => 'titre Test 2',
-        'sous_titre' => 'sous-titre Test 2',
-        'utilisateur_id' => '111',
+        'nom' => 'Testeur2',
+        'sexe' => 'femelle',
+        'date_de_naissance' => '2004-12-31',
         'date' => '2017-12-31',
-        'texte' => 'texte Test 2',
-        'type' => 'type Test 2'
+        'vet_id' => '2',
+        'responsable' => '3'
     ]
 ];
-$vue = new Vue('Chiens');
+$vue = new Vue('index','Chiens');
 $vue->generer(['chiens' => $chiens]);
 

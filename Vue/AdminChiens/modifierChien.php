@@ -4,7 +4,7 @@
     <h1 id="titreReponses">Modifier le chien :</h1>
 </header>
 
-<form action="Chiens/miseAJourChien" method="post">
+<form action="Adminchiens/miseAJourChien" method="post">
     <h2>Faire une requete</h2>
     <p>
         <label for="nom_chien">Nom de chien</label> : 
@@ -33,7 +33,7 @@
     </p>
 </form>
 
-<form>
+<form action = "AdminChiens/index">
     <input type="submit" value="Annuler" />
 </form>
     </div>

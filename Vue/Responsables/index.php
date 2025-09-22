@@ -1,21 +1,16 @@
-<?php $this->titre = 'Liste des responsables'; ?>
+<?php $this->titre = "Le Blogue du prof - Connexion" ?>
 
+<?php if ($responsable): ?>
+    <p>Bienvenue, <?= htmlspecialchars($responsable['login']) ?> !</p>
+    <a href="Responsables/deconnecter">[Se déconnecter]</a>
+<?php else: ?>
+    <p>Vous devez être en session pour accéder à cette zone.</p>
 
-<a href="Responsables/creerResponsable">
-    <h2 class="Accueil-link">Voulez-vous vous inscrire?</h2>
-</a>
+    <form action="Responsables/connecter" method="post">
+        <input name="login" type="text" placeholder="Entrez votre login" required autofocus>
+        <input name="mdp" type="password" placeholder="Entrez votre mot de passe" required>
+        <button type="submit">Connexion</button>
+    </form>
 
-<?php foreach ($responsables as $responsable):
-    ?>
-
-    <article>
-        <header>
-            <h1 class="titreChien">Nom:<?= $responsable['nom'] ?></h1>
-            <strong class="">Numero de telephone: <?= $responsable['numero_de_telephone'] ?></strong>
-        </header>
-        <p>
-            <a href="Chiens/modifierChien/<?= $chien['id'] ?>"> [Supprimer]</a>
-        </p>
-    </article>
-    <hr />
-<?php endforeach; ?>  
+    <?= ($erreur == 'mdp') ? '<span style="color : red;">Login ou mot de passe incorrects</span>' : '' ?>
+<?php endif; ?>

@@ -1,17 +1,12 @@
 <?php
 
-// require_once 'Modele/Chien.php';
-// require_once 'Modele/Responsable.php';
-// require_once 'Modele/Veterinaire.php';
-// require_once 'Modele/Dossier.php';
-// require_once 'Vue/Vue.php';
-
+require_once 'Controleur/ControleurAdmin.php';
 require_once 'Modele/Chien.php';
 require_once 'Modele/Responsable.php';
 require_once 'Modele/Veterinaire.php';
 require_once 'Modele/Dossier.php';
 
-class ControleurChiens extends Controleur{
+class ControleurAdminChiens extends ControleurAdmin {
 
     private $chien;
     private $responsable;
@@ -25,13 +20,13 @@ class ControleurChiens extends Controleur{
         $this->dossier = new Dossier();
     }
 
-        public function index() {
+// Affiche la liste de tous les articles du blog
+    public function index() {
         $chiens = $this->chien->getChiens();
         $this->genererVue(['chiens' => $chiens]);
     }
 
-// Affiche les détails sur un article
-    public function chien() {
+public function chien() {
         $idChien = $this->requete->getParametreId("id");
         $chien = $this->chien->getChien($idChien);
 
@@ -45,26 +40,6 @@ class ControleurChiens extends Controleur{
         $dossier = $this->dossier->getDossier($idChien);
 
         $this->genererVue(['chien' => $chien, 'responsable' => $responsable, 'veterinaire' => $veterinaire ,'dossier' => $dossier,'erreur' => $erreur]);
-    }
-
-    public function nouvelReq() {
-        $responsables = $this->responsable->getResponsables();
-        $veterinaires = $this->veterinaire->getVeterinaires();
-        $vue = new Vue("Requete");
-        $vue->generer(['veterinaires'=>$veterinaires, 'responsables'=>$responsables]);
-    }
-
-    public function nouveauChien() {
-        $veterinaires = $this->veterinaire->getVeterinaires();
-        $responsables = $this->responsable->getResponsables();
-        $this->genererVue(['veterinaires' => $veterinaires,'responsables' => $responsables]);
-    }
-
-    //make into a new file later
-    public function nouveauResp() {
-        $responsables = $this->responsable->getResponsables();
-        $vue = new Vue("Responsable");
-        $vue->generer(['responsables'=>$responsables]);
     }
 
     public function ajouter() {
@@ -82,19 +57,11 @@ class ControleurChiens extends Controleur{
         $this->executerAction('index');
     }
 
-// Enregistre le nouvel article et retourne à la liste des articles
-    public function ajouterChien($chien) {
-        $this->chien->setReqChien($chien);
-
-        //on retrouve le id de dernier chien cree
-        $chienId = $this->chien->getLastInsertId();
-
-        //creer le dossier
-        $this->dossier->createDossier($chienId, $chien['vet_id']);
-        
-        $this->chiens();
+    public function nouveauChien() {
+        $veterinaires = $this->veterinaire->getVeterinaires();
+        $responsables = $this->responsable->getResponsables();
+        $this->genererVue(['veterinaires' => $veterinaires,'responsables' => $responsables]);
     }
-
 // Modifier un article existant    
     public function modifierChien() {
         $id = $this->requete->getParametreId('id');
@@ -126,4 +93,5 @@ class ControleurChiens extends Controleur{
         $this->executerAction('index');
 
     }
+
 }

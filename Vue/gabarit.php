@@ -18,6 +18,13 @@
             </a>
             <p>Version MVC en PHP orienté-objet avec tests.</p>
             </a>
+            <?php if (isset($responsable)) : ?>
+                    <h3>Bonjour <?= $responsable['nom'] ?>,
+                        <a href="Responsables/deconnecter"><small>[Se déconnecter]</small></a>
+                    </h3>
+                <?php else : ?>
+                    <h3>[<a href="Responsables/index">Se connecter</a>] <small>(admin/admin)</small></h3>
+                <?php endif; ?>
             <a href="Apropos">
                     <h3>À propos | </h4>
                 </a>

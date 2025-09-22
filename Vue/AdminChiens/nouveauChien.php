@@ -4,7 +4,7 @@
     <h1 id="titre">Ajouter une requete :</h1>
 </header>
 
-<form action="Chiens/ajouter" method="post">
+<form action="Adminchiens/ajouter" method="post">
     <h2>Faire une requete</h2>
     <p>
         <label for="nom_chien">Nom de chien</label> :
