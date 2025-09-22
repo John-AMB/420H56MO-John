@@ -19,12 +19,16 @@
         <label for="date_de_naissance">Date de naissance du chien :</label>
         <input type="date" name="date_de_naissance" id="date_de_naissance" 
                value="<?= $chien['date_de_naissance'] ?>" required><br />
+        
+        <label for="sommaire">Dossier de santé :</label><br />
+        <textarea name="sommaire" id="sommaire" rows="6" cols="50"><?= htmlspecialchars($dossier['sommaire'] ?? '') ?></textarea>
 
 
         <input type="hidden" name="id" value="<?= $chien['id'] ?>" />
         <input type="hidden" name="vet_id" value="<?= $chien['vet_id'] ?>" />
-        <input type="hidden" name="responsable_id" value="<?= $chien['responsable_id'] ?>" />
+        <input type="hidden" name="responsable_id" value="<?= $chien['responsable_id'] ?>" /><br />
 
+        
         <input type="submit" value="Modifier" />
     </p>
 </form>

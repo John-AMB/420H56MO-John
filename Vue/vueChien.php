@@ -11,6 +11,13 @@
 <header>
     <h1 id="titreVet">Veterinaire: <?= $veterinaire['nom'] ?></h1>
     <h1 id="titreVet">Maitre/Maitress: <?=$responsable['nom'] ?></h1>
+
+    <section>
+        <h2>Dossier de santé</h2>
+        <?php if ($dossier): ?>
+            <p><?= nl2br(htmlspecialchars($dossier['sommaire'])) ?></p>
+        <?php endif; ?>
+    </section>
 </header>
 
 

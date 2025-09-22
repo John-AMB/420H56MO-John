@@ -33,17 +33,7 @@ class Chien extends Modele {
             throw new Exception("Aucun article ne correspond à l'identifiant '$idChien'");
         }
     }
-/*
-// Renvoie les informations sur un article
-function getChien($idChien) {
-    $bdd = getBdd();
-    $chien = $bdd->prepare('select * from Chiens WHERE ID=?');
-    $chien->execute(array($idChien));
-    if ($chien->rowCount() == 1)
-        return $chien->fetch();  // Accès à la première ligne de résultat
-    else
-        throw new Exception("Aucun article ne correspond à l'identifiant '$idChien'");
-}*/
+
  // Ajout d'un nouvel article
     public function setReqChien($chien) {
         $sql = 'INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES(?, ?, ?, ?, ?)';
@@ -51,18 +41,6 @@ function getChien($idChien) {
         return $result;
     }
     
-
-    /*function setReqChien($req) {
-    $bdd = getBdd();
-    $reqs = $bdd->prepare('INSERT INTO chiens (nom_chien, sexe, date_de_naissance, vet_id, responsable_id) VALUES (?, ?, ?, ?, ?)');
-    $reqs->execute(array(
-        $req['nom'],
-        $req['sexe'],
-        $req['date_de_naissance'],
-        $req['vet_id'],
-        $req['responsable_id']
-    ));
-}*/
     // Met à jour un article
     public function updateChien($chien) {
         $sql = 'UPDATE chiens'
@@ -71,5 +49,18 @@ function getChien($idChien) {
         $result = $this->executerRequete($sql, [$chien['nom_chien'], $chien['sexe'], $chien['date_de_naissance'], $chien['vet_id'], $chien['responsable_id'], $chien['id']]);
         return $result;
     }
+
+    public function setDossierDeSante($chienId, $vetId) {
+    $sql = 'INSERT INTO dossiers_de_sante (chien_id, vet_id, sommaire) VALUES (?, ?, ?)';
+    $sommaire = ''; 
+    $result = $this->executerRequete($sql, [$chienId, $vetId, $sommaire]);
+    return $result;
+    }
+
+    //on retrouve le id de dernier chien cree
+    public function getLastInsertId() {
+    $sql = "SELECT LAST_INSERT_ID()";
+    return $this->executerRequete($sql)->fetchColumn();
+}
     
 }

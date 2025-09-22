@@ -15,14 +15,8 @@ class Responsable extends Modele {
                 . ' order by ID desc';
 
         $responsables = $this->executerRequete($sql);
-        return $responsables->fetchAll(PDO::FETCH_ASSOC);;
+        return $responsables;
     }
-    /*
-function getResponsables(){
-    $bdd = getBdd();
-    $responsables = $bdd->query('SELECT id, nom from Responsables ORDER BY nom');
-    return $responsables->fetchAll(PDO::FETCH_ASSOC);
-}*/
 
 // Renvoie un commentaire spécifique
     public function getResponsable($res_id) {
@@ -35,19 +29,6 @@ function getResponsables(){
             throw new Exception("Aucun commentaire ne correspond à l'identifiant '$res_id'");
         }
     }
-/*
-// Renvoie le responsable de chien
-function getResponsable($res_id) {
-    $bdd = getBdd();
-    $responsable = $bdd->prepare('SELECT * FROM responsables WHERE id= ?');
-    $responsable->execute(array($res_id));
-    if ($responsable->rowCount() ==1)
-        return $responsable->fetch();
-    else if ($responsable->rowCount() > 1)
-        throw new Exception("test2");
-    else
-        throw new Exception("Aucun responsable ne correspond pas au chien");
-}*/
 
 // Supprime un commentaire
     public function deleteResponsable($res_id) {
@@ -63,12 +44,5 @@ function getResponsable($res_id) {
         $result = $this->executerRequete($sql, [$responsable['nom'], $responsable['numero_de_telephone']]);
         return $result;
     }
-    /*
-    function setResponsable($responsable) {
-    $bdd = getBdd();
-    $responsables = $bdd->prepare('INSERT INTO responsables (nom, numero_de_telephone) VALUES (?, ?)');
-    $responsables->execute(array($responsable['nom'], $responsable['numero_de_telephone']));
-
-}*/
 
 }
